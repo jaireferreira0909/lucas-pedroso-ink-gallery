@@ -1,0 +1,3 @@
+- [x] Criar identidade visual e página principal para anúncios de Lucas Pedroso.
+- [x] Criar páginas de trabalhos, sobre e contato com informações públicas verificáveis.
+- [x] Validar navegação, visual móvel e desktop e links de orçamento.
