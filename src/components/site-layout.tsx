@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Instagram, Menu, X } from "lucide-react";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export const WHATSAPP = "https://wa.me/5515981392638";
@@ -15,10 +14,9 @@ const navigation = [
 ];
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
   return <header className="relative z-30 bg-background">
     <div className="page-shell flex h-[74px] items-center justify-between gap-4 border-b border-border md:h-[88px]">
-      <Link to="/" onClick={() => setOpen(false)} className="group flex shrink-0 items-center gap-3" aria-label="Lucas Pedroso Tattoo — início">
+      <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="Lucas Pedroso Tattoo — início">
         <span className="flex size-10 items-center justify-center border border-foreground font-display text-[26px] leading-none transition-colors group-hover:bg-foreground group-hover:text-background">LP</span>
         <span className="flex flex-col leading-none"><strong className="font-display text-[24px] font-medium">Lucas Pedroso</strong><span className="micro-label mt-1 text-muted-foreground">Tattoo / Sorocaba</span></span>
       </Link>
@@ -26,9 +24,11 @@ export function SiteHeader() {
         {navigation.map(item => <Link key={item.to} to={item.to} activeProps={{ className: "text-foreground border-foreground" }} inactiveProps={{ className: "text-muted-foreground border-transparent" }} className="border-b pb-1 text-[11px] font-bold uppercase tracking-[.16em] transition-colors hover:text-foreground">{item.label}</Link>)}
       </nav>
       <div className="hidden items-center gap-5 lg:flex"><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lucas Pedroso" className="transition-opacity hover:opacity-60"><Instagram size={18}/></a><Button variant="default" asChild className="h-11 rounded-none px-6 text-[11px] font-bold uppercase tracking-[.14em]"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Pedir orçamento <ArrowUpRight size={15}/></a></Button></div>
-      <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open}>{open ? <X/> : <Menu/>}</Button>
+      <details className="group lg:hidden">
+        <summary className="flex size-9 cursor-pointer list-none items-center justify-center [&::-webkit-details-marker]:hidden" aria-label="Abrir menu"><Menu className="group-open:hidden" size={20}/><X className="hidden group-open:block" size={20}/></summary>
+        <nav aria-label="Navegação móvel" className="absolute left-0 top-full z-30 flex w-full flex-col border-b border-border bg-background px-4 py-3 shadow-lg">{navigation.map(item => <Link key={item.to} to={item.to} className="border-b border-border/60 py-4 text-sm font-bold uppercase tracking-[.12em]">{item.label}</Link>)}<a href={QUOTE} target="_blank" rel="noopener noreferrer" className="py-5 text-sm font-bold uppercase tracking-[.12em]">Pedir orçamento ↗</a></nav>
+      </details>
     </div>
-    {open && <nav aria-label="Navegação móvel" className="page-shell flex flex-col border-b border-border bg-background py-3 lg:hidden">{navigation.map(item => <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className="border-b border-border/60 py-4 text-sm font-bold uppercase tracking-[.12em]">{item.label}</Link>)}<a href={QUOTE} target="_blank" rel="noopener noreferrer" className="py-5 text-sm font-bold uppercase tracking-[.12em]">Pedir orçamento ↗</a></nav>}
   </header>;
 }
 
