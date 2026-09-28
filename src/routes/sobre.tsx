@@ -5,10 +5,10 @@ import { INSTAGRAM, QUOTE, SiteLayout } from "@/components/site-layout";
 import studioImage from "@/assets/tattoo-studio.jpg";
 
 export const Route = createFileRoute("/sobre")({ head: () => ({ meta: [
-  { title: "Sobre Lucas Pedroso | Tatuador em Sorocaba" },
-  { name: "description", content: "Conheça Lucas Pedroso Tattoo, artista de tatuagem em Sorocaba, SP. Acompanhe o trabalho no Instagram e entre em contato pelo WhatsApp." },
-  { property: "og:title", content: "Sobre Lucas Pedroso | Tatuador em Sorocaba" },
-  { property: "og:description", content: "Conheça Lucas Pedroso e sua arte em Sorocaba, SP." },
+  { title: "Sobre Lucas Pedroso | Tattoo & Barber em Sorocaba" },
+  { name: "description", content: "Conheça Lucas Pedroso, tatuagem em Sorocaba e barbearia Franqueza na Vila Hortência. Entre em contato pelo WhatsApp." },
+  { property: "og:title", content: "Sobre Lucas Pedroso | Tattoo & Barber em Sorocaba" },
+  { property: "og:description", content: "Tatuagem e barbearia em Sorocaba, SP." },
   { property: "og:type", content: "website" },
   { name: "twitter:card", content: "summary_large_image" },
 ] }), component: Sobre });
