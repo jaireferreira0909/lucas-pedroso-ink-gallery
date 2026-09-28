@@ -1,3 +1,6 @@
 - [x] Criar identidade visual e página principal para anúncios de Lucas Pedroso.
 - [x] Criar páginas de trabalhos, sobre e contato com informações públicas verificáveis.
 - [x] Validar navegação, visual móvel e desktop e links de orçamento.
+- [ ] Atualizar identificação para Tattoo & Barber, incluir barbearia e endereço com acesso ao Maps.
+- [ ] Adicionar acesso flutuante ao WhatsApp e conferir navegação em telas pequenas.
+- [ ] Incluir seleção de fotos reais dos trabalhos quando forem anexadas.
