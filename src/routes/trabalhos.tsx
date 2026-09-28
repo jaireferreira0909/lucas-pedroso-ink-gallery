@@ -6,9 +6,9 @@ import studioImage from "@/assets/tattoo-studio.jpg";
 
 export const Route = createFileRoute("/trabalhos")({
   head: () => ({ meta: [
-    { title: "Trabalhos | Lucas Pedroso Tattoo em Sorocaba" },
+    { title: "Trabalhos de Tatuagem | Lucas Pedroso Tattoo & Barber" },
     { name: "description", content: "Veja onde acompanhar o portfólio atualizado de Lucas Pedroso Tattoo no Instagram e peça um orçamento para sua tatuagem em Sorocaba." },
-    { property: "og:title", content: "Trabalhos | Lucas Pedroso Tattoo" },
+    { property: "og:title", content: "Trabalhos de Tatuagem | Lucas Pedroso Tattoo & Barber" },
     { property: "og:description", content: "Acompanhe os trabalhos e novas publicações de Lucas Pedroso no Instagram." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
