@@ -12,3 +12,4 @@
 - Keep the public tattoo site as distinct TanStack routes with shared navigation in `src/components/site-layout.tsx`, because ad visitors need direct, shareable destinations.
 - Treat Instagram as the source of current portfolio images and availability; the site links to the public profile rather than inventing or scraping posts, because public profile HTML does not expose reliable post media.
 - Keep shared WhatsApp and Google Maps destinations in `src/components/site-layout.tsx`, because every public page uses the same verified contact and location.
+- Keep user-provided tattoo and barber photos in a shared work gallery backed by CDN asset pointers, because the homepage and portfolio must show the same real work without duplicating binaries.
