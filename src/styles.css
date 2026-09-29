@@ -29,6 +29,8 @@
   --color-ink-foreground: var(--ink-foreground);
   --color-ochre: var(--ochre);
   --color-ochre-foreground: var(--ochre-foreground);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
   --radius-sm: 2px;
   --radius-md: 3px;
   --radius-lg: 4px;
@@ -58,6 +60,8 @@
   --ink-foreground: oklch(0.965 0.008 80);
   --ochre: oklch(0.77 0.085 78);
   --ochre-foreground: oklch(0.19 0.008 65);
+  --whatsapp: oklch(0.72 0.19 146);
+  --whatsapp-foreground: oklch(1 0 0);
 }
 
 @layer base {
