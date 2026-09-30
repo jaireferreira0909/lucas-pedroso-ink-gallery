@@ -1,24 +1,27 @@
 import tattooSamurai from "@/assets/tattoo-samurai.jpeg.asset.json";
 import tattooKoi from "@/assets/tattoo-koi.jpeg.asset.json";
 import barberClassic from "@/assets/barber-classic.jpeg.asset.json";
+import barberShort from "@/assets/barber-short.jpeg.asset.json";
 import barberTexturedTop from "@/assets/barber-textured-top.jpeg";
 import barberBuzzDetail from "@/assets/barber-buzz-detail.jpeg";
 import barberLinesKid from "@/assets/barber-lines-kid.jpeg";
-import barberLinesKidWide from "@/assets/barber-lines-kid-wide.jpeg";
 
 export const IMAGES = {
   tattooSamurai: tattooSamurai.url,
   tattooKoi: tattooKoi.url,
   barberClassic: barberClassic.url,
+  barberShort: barberShort.url,
   barberTexturedTop,
   barberBuzzDetail,
   barberLinesKid,
-  barberLinesKidWide,
 };
 
+// texturedTop fica de fora da galeria de proposito: e o hero da home e o
+// banner de /trabalhos. Sem essa exclusao a mesma foto apareceria tres
+// vezes na mesma tela.
 const work = [
   { image: IMAGES.tattooSamurai, alt: "Tatuagem japonesa em preto e cinza no braço e na mão", label: "Tatuagem / Preto e cinza" },
-  { image: IMAGES.barberTexturedTop, alt: "Corte social com topo volumizado e lateral baixa, barba alinhada", label: "Barbearia / Corte e barba" },
+  { image: IMAGES.barberShort, alt: "Corte masculino curto com degradê e barba grisalha alinhada", label: "Barbearia / Corte e barba" },
   { image: IMAGES.tattooKoi, alt: "Tatuagem de carpa japonesa com detalhes vermelhos no antebraço e na mão", label: "Tatuagem / Oriental" },
   { image: IMAGES.barberBuzzDetail, alt: "Corte buzz com detalhe desenhado a navalha na lateral", label: "Barbearia / Detalhe" },
   { image: IMAGES.barberLinesKid, alt: "Corte em degradê com linha desenhada na parte superior", label: "Barbearia / Degradê" },
