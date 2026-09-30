@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { INSTAGRAM, QUOTE, SiteLayout } from "@/components/site-layout";
-import studioImage from "@/assets/tattoo-studio.jpg";
-import { WorkGallery } from "@/components/work-gallery";
+import { IMAGES, WorkGallery } from "@/components/work-gallery";
 import { FaWhatsapp } from "react-icons/fa6";
 
 export const Route = createFileRoute("/trabalhos")({
@@ -19,7 +18,7 @@ export const Route = createFileRoute("/trabalhos")({
 
 function Trabalhos() { return <SiteLayout><main>
   <section className="page-shell grid gap-10 pb-12 pt-16 md:grid-cols-[1fr_.6fr] md:items-end md:pb-20 md:pt-28"><div><span className="micro-label text-muted-foreground">Portfólio / Lucas Pedroso</span><h1 className="display-serif mt-7 text-[clamp(68px,10vw,150px)]">Trabalhos<span className="text-ochre">.</span></h1></div><p className="max-w-sm pb-2 text-base leading-8 text-muted-foreground">A arte ganha vida na pele. Acompanhe o trabalho de Lucas diretamente no perfil oficial, onde as publicações são atualizadas.</p></section>
-  <section className="relative h-[420px] overflow-hidden bg-ink md:h-[660px]"><img src={studioImage} loading="lazy" width={1536} height={1024} alt="Tatuagem botânica em processo, imagem ilustrativa" className="absolute inset-0 size-full object-cover object-[center_55%]"/><div className="dark-shade absolute inset-0"/><span className="absolute bottom-6 left-6 text-[10px] font-bold uppercase tracking-[.2em] text-ink-foreground md:left-[max(24px,calc((100vw-1380px)/2))]">Imagem ilustrativa do processo de tatuagem</span></section>
+  <section className="relative h-[420px] overflow-hidden bg-ink md:h-[660px]"><img src={IMAGES.tattooSamurai} loading="lazy" decoding="async" width={1200} height={1600} alt="Tatuagem japonesa em preto e cinza no braço e na mão" className="absolute inset-0 size-full object-cover object-[50%_center]"/><div className="dark-shade absolute inset-0"/></section>
   <WorkGallery/>
   <section className="page-shell grid gap-10 py-16 md:grid-cols-[.7fr_1.3fr] md:gap-20 md:py-28"><div className="flex items-start gap-3"><span className="h-px w-7 bg-foreground mt-2"/><span className="micro-label">Portfólio atualizado</span></div><div><Instagram size={27} strokeWidth={1.3}/><h2 className="display-serif mt-7 max-w-2xl text-[clamp(48px,6vw,90px)]">Veja mais no <em>Instagram.</em></h2><p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">Acompanhe @lucaspedrosoink para ver mais tatuagens e novidades diretamente no perfil de Lucas.</p><div className="mt-9 flex flex-wrap gap-4"><Button asChild variant="default" size="lg" className="h-12 rounded-none px-7 text-xs font-bold uppercase tracking-[.12em]"><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">Abrir Instagram <ArrowUpRight size={16}/></a></Button><Button asChild variant="whatsapp" size="lg" className="h-12 rounded-none px-7 text-xs font-bold uppercase tracking-[.12em]"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Pedir orçamento <FaWhatsapp/></a></Button></div></div></section>
 </main></SiteLayout>; }
