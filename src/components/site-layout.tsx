@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export const WHATSAPP = "https://wa.me/5515981392638";
 export const INSTAGRAM = "https://www.instagram.com/lucaspedrosoink/";
+export const FACEBOOK = "https://www.facebook.com/profile.php?id=61594548187193";
 export const QUOTE = `${WHATSAPP}?text=${encodeURIComponent("Olá, Lucas! Gostaria de fazer um orçamento para uma tatuagem.")}`;
 export const BARBER_CHAT = `${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre um corte na Franqueza Barbearia.")}`;
 export const MAPS = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Franqueza Barbearia, R. Santa Maria, 63 - Vila Hortência, Sorocaba - SP, 18020-216");
