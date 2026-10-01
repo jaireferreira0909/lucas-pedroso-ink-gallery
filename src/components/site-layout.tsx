@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, MapPin, Menu, X } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
+import { ArrowUpRight, MapPin, Menu, X } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 export const WHATSAPP = "https://wa.me/5515981392638";
@@ -27,7 +27,7 @@ export function SiteHeader() {
       <nav aria-label="Navegação principal" className="hidden items-center gap-9 lg:flex">
         {navigation.map(item => <Link key={item.to} to={item.to} activeProps={{ className: "text-foreground border-foreground" }} inactiveProps={{ className: "text-muted-foreground border-transparent" }} className="border-b pb-1 text-[11px] font-bold uppercase tracking-[.16em] transition-colors hover:text-foreground">{item.label}</Link>)}
       </nav>
-       <div className="hidden items-center gap-5 lg:flex"><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lucas Pedroso" className="transition-opacity hover:opacity-60"><Instagram size={18}/></a><Button variant="ochre" asChild className="h-11 rounded-none px-6 text-[11px] font-bold uppercase tracking-[.14em]"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Pedir orçamento <ArrowUpRight size={16}/></a></Button></div>
+       <div className="hidden items-center gap-5 lg:flex"><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lucas Pedroso" title="Instagram" className="transition-opacity hover:opacity-60"><FaInstagram size={18}/></a><a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook de Lucas Pedroso" title="Facebook" className="transition-opacity hover:opacity-60"><FaFacebookF size={18}/></a><Button variant="ochre" asChild className="h-11 rounded-none px-6 text-[11px] font-bold uppercase tracking-[.14em]"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Pedir orçamento <ArrowUpRight size={16}/></a></Button></div>
       <details className="group lg:hidden">
         <summary className="flex size-9 cursor-pointer list-none items-center justify-center [&::-webkit-details-marker]:hidden" aria-label="Abrir menu"><Menu className="group-open:hidden" size={20}/><X className="hidden group-open:block" size={20}/></summary>
         <nav aria-label="Navegação móvel" className="absolute left-0 top-full z-30 flex w-full flex-col border-b border-border bg-background px-4 py-3 shadow-lg">{navigation.map(item => <Link key={item.to} to={item.to} className="border-b border-border/60 py-4 text-sm font-bold uppercase tracking-[.12em]">{item.label}</Link>)}<Button asChild variant="ochre" className="mt-4 h-11 rounded-none text-sm font-bold uppercase"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Pedir orçamento <ArrowUpRight size={16}/></a></Button></nav>
