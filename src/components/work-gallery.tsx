@@ -54,11 +54,11 @@ export function WorkGallery({ compact = false, limit, variant = "all" }: { compa
         {!compact && <p className="max-w-xs text-sm leading-7 text-muted-foreground">Tatuagem e barbearia em Sorocaba, através de trabalhos reais.</p>}
       </div>
       {variant !== "barber" && <div id="galeria-tatuagem" className="scroll-mt-24">
-        <p className="micro-label text-muted-foreground">Tatuagem</p>
+        <p className="micro-label text-foreground">Tatuagem · Lucas Pedroso</p>
         <div className="mt-5"><WorkGrid items={tattoo} /></div>
       </div>}
       {variant !== "tattoo" && <div id="galeria-barbearia" className="mt-12 scroll-mt-24 md:mt-16">
-        <p className="micro-label text-muted-foreground">Barbearia · Franqueza</p>
+        <p className="micro-label text-foreground">Barbearia · Franqueza Studio</p>
         <div className="mt-5"><WorkGrid items={barber} /></div>
       </div>}
     </div>
