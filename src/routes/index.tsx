@@ -20,10 +20,10 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return <SiteLayout><main>
-    <section className="relative flex min-h-[580px] items-center overflow-hidden bg-ink text-ink-foreground md:min-h-[680px] lg:h-[min(790px,80vh)]">
+    <section className="relative flex min-h-[520px] items-start overflow-hidden bg-ink text-ink-foreground md:min-h-[600px] lg:h-[min(700px,82vh)]">
       <HeroCarousel />
       <div className="hero-shade absolute inset-0" />
-      <div className="page-shell relative z-10 py-20 md:py-24">
+      <div className="page-shell relative z-10 py-14 md:py-20">
         <Link to="/sobre" aria-label="Conheça Lucas Pedroso" className="relative z-10 mb-8 flex max-w-[300px] items-center gap-3 rounded-2xl border border-ink-foreground/25 bg-ink/55 p-3 pr-4 backdrop-blur-md transition-colors hover:border-ochre/60 md:absolute md:right-0 md:top-2 md:mb-0 md:gap-4 md:p-4 md:pr-5"><img src={IMAGES.barberBuzzDetail} alt="Lucas Pedroso" width={160} height={160} loading="eager" decoding="async" className="size-12 shrink-0 rounded-full object-cover ring-2 ring-ochre md:size-20" /><span className="min-w-0"><span className="micro-label text-ochre">O artista</span><span className="mt-1 block font-display text-lg leading-tight md:text-xl">Lucas Pedroso</span><span className="mt-1 hidden text-xs leading-5 text-ink-foreground/75 sm:block">Tatuagem autoral e barbearia em Sorocaba.</span></span></Link>
         <div className="mb-7 flex items-center gap-3"><span className="h-px w-8 bg-ochre"/><span className="micro-label text-ochre">Tattoo &amp; Barber · Sorocaba, SP</span></div>
         <h1 className="display-serif max-w-[1000px] text-[clamp(68px,10vw,160px)]">Lucas<br/><em>Pedroso.</em></h1>
