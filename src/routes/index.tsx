@@ -23,6 +23,10 @@ function Index() {
     <section className="relative flex min-h-[580px] items-end overflow-hidden bg-ink text-ink-foreground md:min-h-[680px] lg:h-[min(790px,80vh)]">
       <HeroCarousel />
       <div className="hero-shade absolute inset-0" />
+      <Link to="/sobre" aria-label="Conheça Lucas Pedroso" className="absolute right-4 top-6 z-10 flex max-w-[280px] items-center gap-4 rounded-2xl border border-ink-foreground/25 bg-ink/55 p-4 pr-5 backdrop-blur-md transition-colors hover:border-ochre/60 md:right-10 md:top-12">
+        <img src={IMAGES.barberBuzzDetail} alt="Lucas Pedroso" width={160} height={160} loading="eager" decoding="async" className="size-16 shrink-0 rounded-full object-cover ring-2 ring-ochre md:size-20" />
+        <span className="min-w-0"><span className="micro-label text-ochre">O artista</span><span className="mt-1 block font-display text-xl leading-tight">Lucas Pedroso</span><span className="mt-1 block text-xs leading-5 text-ink-foreground/75">Tatuagem autoral e barbearia em Sorocaba.</span></span>
+      </Link>
       <div className="page-shell relative z-10 pb-12 pt-32 md:pb-20">
         <div className="mb-7 flex items-center gap-3"><span className="h-px w-8 bg-ochre"/><span className="micro-label text-ochre">Tattoo &amp; Barber · Sorocaba, SP</span></div>
         <h1 className="display-serif max-w-[1000px] text-[clamp(68px,10vw,160px)]">Lucas<br/><em>Pedroso.</em></h1>
