@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin, Menu, X } from "lucide-react";
+import { ArrowUpRight, CalendarPlus, MapPin, Menu, X } from "lucide-react";
+import { useEffect, useState, type FormEvent } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
@@ -41,4 +42,45 @@ export function SiteFooter() {
    return <footer className="bg-ink text-ink-foreground"><div className="page-shell py-14 md:py-20"><div className="grid gap-10 md:grid-cols-[1fr_auto] md:gap-20"><div><span className="micro-label text-ochre">Lucas Pedroso · Tattoo &amp; Barber</span><h2 className="display-serif mt-5 max-w-2xl text-[clamp(45px,6vw,90px)]">Sua próxima ideia<br/><em>começa aqui.</em></h2><div className="mt-9 flex flex-wrap gap-3"><Button asChild variant="ochre" className="h-12 rounded-none px-5 text-xs font-bold uppercase"><a href={QUOTE} target="_blank" rel="noopener noreferrer">Fazer pedido <ArrowUpRight size={16}/></a></Button><Button asChild variant="whatsapp" className="h-12 rounded-none px-5 text-xs font-bold uppercase"><a href={WHATSAPP} target="_blank" rel="noopener noreferrer"><FaWhatsapp size={16}/> {WHATSAPP_DISPLAY}</a></Button></div></div><div className="flex flex-col justify-end gap-4 text-sm"><span className="micro-label text-ochre">Encontre-me</span><span>R. Santa Maria, 63 · Vila Hortência<br/>Sorocaba - SP, 18020-216</span><a href={MAPS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:underline"><MapPin size={15}/> Abrir no Google Maps <ArrowUpRight size={15}/></a><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:underline">@lucaspedrosoink <ArrowUpRight size={15}/></a></div></div><div className="mt-16 flex flex-col justify-between gap-4 border-t border-ink-foreground/20 pt-5 text-[11px] text-ink-foreground/60 md:flex-row"><span>© {new Date().getFullYear()} Lucas Pedroso · Tattoo &amp; Barber</span><span>Arte na pele e no visual, em Sorocaba.</span></div></div></footer>;
 }
 
-export function SiteLayout({ children }: { children: React.ReactNode }) { return <><SiteHeader/>{children}<SiteFooter/><div className="fixed z-50 flex flex-col items-end gap-3 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] sm:right-[max(1.5rem,env(safe-area-inset-right))]"><Button asChild variant="ochre" className="h-14 rounded-full px-6 text-xs font-bold uppercase tracking-[.12em] shadow-lg"><a href={QUOTE} target="_blank" rel="noopener noreferrer" aria-label="Fazer pedido pelo WhatsApp">Fazer pedido <ArrowUpRight size={16}/></a></Button><Button asChild variant="whatsapp" className="h-16 w-16 justify-center rounded-full border border-whatsapp-foreground/40 p-0 shadow-lg transition-transform hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-whatsapp-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none sm:h-16 sm:w-16"><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="Conversar pelo WhatsApp: +55 15 99775-3058" title="Conversar pelo WhatsApp"><FaWhatsapp className="!size-8" aria-hidden="true"/></a></Button></div></>; }
+const SCHEDULE_OPTIONS = ["Tatuagem — Orçamento", "Barbearia — Agendar corte"] as const;
+
+function ScheduleModal({ onClose }: { onClose: () => void }) {
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [tipo, setTipo] = useState<string>(SCHEDULE_OPTIONS[0] ?? "Tatuagem — Orçamento");
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    const message = `Olá, Lucas! Sou ${nome.trim()} (${telefone.trim()}). Quero: ${tipo}.`;
+    window.open(`${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    onClose();
+  }
+
+  const inputClass = "h-12 w-full border border-input bg-background px-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-ochre";
+
+  return <div role="dialog" aria-modal="true" aria-label="Agendar atendimento" onClick={onClose} className="fixed inset-0 z-[60] grid place-items-center bg-ink/70 p-4 backdrop-blur-sm">
+    <div onClick={(event) => event.stopPropagation()} className="w-full max-w-md border border-border bg-card p-8 text-card-foreground">
+      <div className="flex items-start justify-between gap-4">
+        <div><span className="micro-label text-ochre">Agendamento</span><h3 className="mt-2 font-display text-3xl leading-tight">Agende seu horário</h3></div>
+        <button type="button" onClick={onClose} aria-label="Fechar agendamento" className="flex size-9 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-ochre hover:text-foreground"><X size={18} /></button>
+      </div>
+      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <div><label htmlFor="agendar-nome" className="micro-label mb-2 block text-muted-foreground">Nome</label><input id="agendar-nome" type="text" required value={nome} onChange={(event) => setNome(event.target.value)} placeholder="Seu nome" autoComplete="name" className={inputClass} /></div>
+        <div><label htmlFor="agendar-telefone" className="micro-label mb-2 block text-muted-foreground">Seu WhatsApp</label><input id="agendar-telefone" type="tel" required value={telefone} onChange={(event) => setTelefone(event.target.value)} placeholder="(00) 90000-0000" autoComplete="tel" className={inputClass} /></div>
+        <div><label htmlFor="agendar-tipo" className="micro-label mb-2 block text-muted-foreground">Tipo de atendimento</label><select id="agendar-tipo" value={tipo} onChange={(event) => setTipo(event.target.value)} className={inputClass}>{SCHEDULE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}</select></div>
+        <Button type="submit" variant="ochre" className="h-12 w-full rounded-none text-xs font-bold uppercase tracking-[.12em]">Enviar agendamento</Button>
+        <p className="text-center text-xs text-muted-foreground">Seus dados abrem uma conversa no WhatsApp {WHATSAPP_DISPLAY}.</p>
+      </form>
+    </div>
+  </div>;
+}
+
+export function SiteLayout({ children }: { children: React.ReactNode }) {
+  const [scheduleOpen, setScheduleOpen] = useState(false);
+  return <><SiteHeader/>{children}<SiteFooter/><div className="fixed z-50 flex flex-col items-end gap-3 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] sm:right-[max(1.5rem,env(safe-area-inset-right))]"><Button asChild variant="ochre" className="h-14 rounded-full px-6 text-xs font-bold uppercase tracking-[.12em] shadow-lg"><a href={QUOTE} target="_blank" rel="noopener noreferrer" aria-label="Fazer pedido pelo WhatsApp">Fazer pedido <ArrowUpRight size={16}/></a></Button><button type="button" onClick={() => setScheduleOpen(true)} aria-label="Agendar atendimento" title="Agendar atendimento" className="flex h-16 w-16 items-center justify-center rounded-full bg-ochre text-ochre-foreground shadow-lg transition-transform hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ochre focus-visible:ring-offset-2 focus-visible:ring-offset-background"><CalendarPlus className="size-7" aria-hidden="true"/></button><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" aria-label="Conversar pelo WhatsApp: +55 15 99775-3058" title="Conversar pelo WhatsApp" className="flex h-16 w-16 items-center justify-center rounded-full border border-ink-foreground/30 bg-ink text-ink-foreground shadow-lg transition-all hover:scale-105 hover:border-ochre hover:text-ochre active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ochre focus-visible:ring-offset-2 focus-visible:ring-offset-background"><FaWhatsapp className="!size-8" aria-hidden="true"/></a></div>{scheduleOpen ? <ScheduleModal onClose={() => setScheduleOpen(false)} /> : null}</>; }
